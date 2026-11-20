@@ -79,6 +79,7 @@ from handlers.bot_manager.handlers import (
     BOT_VENV_PATH,
     BOT_ENTRY_FILE
 )
+from handlers.resume import send_resume
 
 
 logging.basicConfig(
@@ -129,6 +130,12 @@ def main():
         MessageHandler(
             filters.Regex("^(اطلاعات تماس|Contact)$"),
             show_contact
+        )
+    )
+    app.add_handler(
+        MessageHandler(
+            filters.Regex("^(دریافت رزومه|Download Resume)$"),
+            send_resume
         )
     )
 
